@@ -55,7 +55,7 @@ export default function Navbar() {
     );
 
     return (
-        <header className="bg-white md:px-20 py-4 px-8">
+        <header className="bg-white md:px-20 py-4 px-8 sticky top-0 shadow">
             <div className="max-w-6xl mx-auto flex items-center justify-between">
                 <Link href={ROUTES.HOME}>
                     <LogoNavbar />
