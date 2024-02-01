@@ -21,4 +21,7 @@ export const GOREST_ENDPOINT = {
         INDEX: `${GOREST_PUBLIC_URL}/posts`,
         DETAIL: `${GOREST_PUBLIC_URL}/posts/:id`,
     },
+    COMMENTS: {
+        INDEX: `${GOREST_PUBLIC_URL}/comments`,
+    },
 };

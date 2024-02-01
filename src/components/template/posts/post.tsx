@@ -1,4 +1,5 @@
 "use client";
+import { getUserDetail } from "@/api/users";
 import { BREADCRUMBS } from "@/common/breadcrumb";
 import CardPostList from "@/components/pages/posts/card-post-list";
 import Breadcrumbs from "@/components/shared/breadcrumbs/breadcrumbs";

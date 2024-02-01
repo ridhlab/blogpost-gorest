@@ -6,6 +6,7 @@ import { parsingRoute } from "@/helpers/route";
 import { IPost } from "@/interfaces/entities/post";
 import React from "react";
 import { BsArrowsExpand, BsEyeFill } from "react-icons/bs";
+import { FaCircleUser } from "react-icons/fa6";
 import { MdOutlineExpandLess } from "react-icons/md";
 
 interface IProps {
@@ -17,11 +18,15 @@ export default function CardPostList({ post }: IProps) {
 
     return (
         <div className="rounded border p-4 flex flex-col gap-y-4">
-            <div className="flex flex-col">
+            <div className="flex flex-col gap-y-1">
                 <h4 className="font-semibold">{post.title}</h4>
-                <p className="text-sm text-slate-500">
-                    Author ID: {post.user_id}
-                </p>
+                <div className="text-sm text-slate-500 flex gap-x-2">
+                    <p>Author ID:</p>
+                    <div className="flex gap-x-1 items-center">
+                        <FaCircleUser className="group-hover:text-blue-500 transition-all" />
+                        {post.user_id}
+                    </div>
+                </div>
             </div>
             <p
                 className={`transition-all ${
