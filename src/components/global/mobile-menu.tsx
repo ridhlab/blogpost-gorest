@@ -51,11 +51,12 @@ export default function MobileMenu({
                             <Link
                                 href={href}
                                 onClick={onToggleNav}
-                                className={`flex gap-x-2 items-center transition-all mb-6 ${
+                                className={`flex gap-x-2 items-center transition-all mb-6 group ${
                                     pathname === href ? "text-blue-500" : ""
                                 }`}
                             >
-                                <MenuIcon /> <p>{label}</p>
+                                <MenuIcon className="text-blue-300 group-hover:text-blue-500" />{" "}
+                                <p>{label}</p>
                             </Link>
                         </li>
                     ))}
