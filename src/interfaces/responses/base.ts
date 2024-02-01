@@ -11,7 +11,7 @@ interface IPagination {
 }
 
 export interface IBaseResponseIndex<T> {
-    meta: IPagination;
+    meta: { pagination: IPagination };
     data: T[];
 }
 
