@@ -26,7 +26,7 @@ export default function CardPostList({ post }: IProps) {
             <p
                 className={`transition-all ${
                     expanded
-                        ? "max-h-20"
+                        ? "max-h-max"
                         : "text-ellipsis overflow-hidden whitespace-nowrap max-h-6"
                 }`}
             >

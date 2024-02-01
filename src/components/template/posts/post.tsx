@@ -1,9 +1,10 @@
-import { getUserDetail } from "@/api/users";
+"use client";
 import { BREADCRUMBS } from "@/common/breadcrumb";
 import CardPostList from "@/components/pages/posts/card-post-list";
 import Breadcrumbs from "@/components/shared/breadcrumbs/breadcrumbs";
 import Card from "@/components/shared/card/card";
 import Pagination from "@/components/shared/pagination/pagination";
+import Slide from "@/components/shared/slide/slide";
 import { IPostResponseIndex } from "@/interfaces/responses/post";
 
 interface IProps {
@@ -30,15 +31,17 @@ export default function PostTemplate({ posts }: IProps) {
 
     return (
         <main className="flex flex-col gap-y-4">
-            <Breadcrumbs items={BREADCRUMBS.Post.Detail(12)} />
-            <Card
-                title={title}
-                footer={<Pagination currentPage={page} totalPage={pages} />}
-            >
-                {posts.data.map(async (post) => {
-                    return <CardPostList key={post.id} post={post} />;
-                })}
-            </Card>
+            <Breadcrumbs items={BREADCRUMBS.Post.Index()} />
+            <Slide delay={0.2}>
+                <Card
+                    title={title}
+                    footer={<Pagination currentPage={page} totalPage={pages} />}
+                >
+                    {posts.data.map((post) => {
+                        return <CardPostList key={post.id} post={post} />;
+                    })}
+                </Card>
+            </Slide>
         </main>
     );
 }
