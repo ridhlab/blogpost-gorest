@@ -1,4 +1,5 @@
 export const ROUTES = {
+    HOME: "/",
     USERS: {
         INDEX: "/users",
         DETAIL: "/users/:id",
@@ -9,7 +10,7 @@ export const ROUTES = {
     },
 };
 
-export const ENDPOINT_API = {
+export const GOREST_ENDPOINT = {
     USERS: {
         INDEX: "/users",
         DETAIL: "/users/:id",
