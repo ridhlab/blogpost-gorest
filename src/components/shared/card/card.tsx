@@ -1,3 +1,5 @@
+import clsx from "clsx";
+import { ClassValue } from "clsx";
 import React from "react";
 
 interface IProps {
@@ -5,6 +7,7 @@ interface IProps {
     title?: React.ReactNode;
     divider?: boolean;
     footer?: React.ReactNode;
+    clsx?: ClassValue[];
 }
 
 export default function Card({
@@ -12,6 +15,7 @@ export default function Card({
     title: titleNode,
     divider = true,
     footer,
+    clsx: customClassnames,
 }: IProps) {
     const title =
         typeof titleNode === "string" ? (
@@ -21,7 +25,12 @@ export default function Card({
         );
 
     return (
-        <div className="bg-white p-4 rounded flex flex-col gap-y-4">
+        <div
+            className={clsx([
+                "bg-white p-4 rounded flex flex-col gap-y-4",
+                ...(customClassnames ?? []),
+            ])}
+        >
             {title ? title : null}
             {divider && title ? <hr /> : null}
             {children}

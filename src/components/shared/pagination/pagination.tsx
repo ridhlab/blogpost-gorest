@@ -12,9 +12,16 @@ import {
 interface IProps {
     currentPage: number;
     totalPage: number;
+    baseUrl: string;
+    queryKeyPage?: string;
 }
 
-export default function Pagination({ currentPage, totalPage }: IProps) {
+export default function Pagination({
+    currentPage,
+    totalPage,
+    baseUrl,
+    queryKeyPage = "page",
+}: IProps) {
     const getPaginationItems = () => {
         if (totalPage <= 5) return arrayRange(1, totalPage);
         if (totalPage > 5 && currentPage <= 3) return arrayRange(1, 5);
@@ -32,15 +39,15 @@ export default function Pagination({ currentPage, totalPage }: IProps) {
                     variant="outline"
                     color="neutral"
                     icon={<MdKeyboardDoubleArrowLeft />}
-                    href={routeWithParams(ROUTES.POSTS.INDEX, { page: "1" })}
+                    href={routeWithParams(baseUrl, { [queryKeyPage]: "1" })}
                 ></Button>
                 <Button
                     size="small"
                     variant="outline"
                     color="neutral"
                     icon={<MdKeyboardArrowLeft />}
-                    href={routeWithParams(ROUTES.POSTS.INDEX, {
-                        page:
+                    href={routeWithParams(baseUrl, {
+                        [queryKeyPage]:
                             currentPage === 1
                                 ? "1"
                                 : (currentPage - 1).toString(),
@@ -55,8 +62,8 @@ export default function Pagination({ currentPage, totalPage }: IProps) {
                         size="small"
                         key={index}
                         color={num === currentPage ? "primary" : "neutral"}
-                        href={routeWithParams(ROUTES.POSTS.INDEX, {
-                            page: num.toString(),
+                        href={routeWithParams(baseUrl, {
+                            [queryKeyPage]: num.toString(),
                         })}
                     >
                         {num}
@@ -70,8 +77,8 @@ export default function Pagination({ currentPage, totalPage }: IProps) {
                     variant="outline"
                     color="neutral"
                     icon={<MdKeyboardArrowRight />}
-                    href={routeWithParams(ROUTES.POSTS.INDEX, {
-                        page:
+                    href={routeWithParams(baseUrl, {
+                        [queryKeyPage]:
                             currentPage === totalPage
                                 ? totalPage.toString()
                                 : (currentPage + 1).toString(),
@@ -82,8 +89,8 @@ export default function Pagination({ currentPage, totalPage }: IProps) {
                     variant="outline"
                     color="neutral"
                     icon={<MdKeyboardDoubleArrowRight />}
-                    href={routeWithParams(ROUTES.POSTS.INDEX, {
-                        page: totalPage.toString(),
+                    href={routeWithParams(baseUrl, {
+                        [queryKeyPage]: totalPage.toString(),
                     })}
                 ></Button>
             </div>

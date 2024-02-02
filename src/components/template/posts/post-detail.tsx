@@ -16,7 +16,7 @@ export default function PostDetailTemplate({ post, comments, author }: IProps) {
         <main className="flex flex-col gap-y-4">
             <Breadcrumbs items={BREADCRUMBS.Post.Detail(post.id)} />
             <CardPostDetail author={author} post={post} />
-            <CardPostComments comments={comments} />
+            <CardPostComments comments={comments} postId={post.id} />
         </main>
     );
 }

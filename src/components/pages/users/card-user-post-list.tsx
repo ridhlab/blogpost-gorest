@@ -2,33 +2,33 @@
 
 import Card from "@/components/shared/card/card";
 import Slide from "@/components/shared/slide/slide";
-import { ICommentResponseIndex } from "@/interfaces/responses/comment";
-import CardPostCommentItem from "./card-post-comment-item";
+import { IPostResponseIndex } from "@/interfaces/responses/post";
+import CardPostList from "../posts/card-post-list";
 import Pagination from "@/components/shared/pagination/pagination";
-import { BsDatabaseFillSlash } from "react-icons/bs";
-import { ROUTES } from "@/constants/route";
 import { parsingRoute } from "@/helpers/route";
+import { ROUTES } from "@/constants/route";
+import { BsDatabaseFillSlash } from "react-icons/bs";
 
 interface IProps {
-    comments: ICommentResponseIndex;
-    postId: number;
+    posts: IPostResponseIndex;
+    userId: number;
 }
 
-export default function CardPostComments({ comments, postId }: IProps) {
-    const isEmpty = comments.data.length === 0;
+export default function CardUserPostList({ posts, userId }: IProps) {
+    const isEmpty = posts.data.length === 0;
     return (
         <Slide delay={0.4}>
             <Card
-                title="Comments"
+                title="List Post"
                 footer={
                     !isEmpty ? (
                         <Pagination
-                            currentPage={comments.meta.pagination.page}
-                            totalPage={comments.meta.pagination.pages}
-                            baseUrl={parsingRoute(ROUTES.POSTS.DETAIL, {
-                                id: postId,
+                            currentPage={posts.meta.pagination.page}
+                            totalPage={posts.meta.pagination.pages}
+                            baseUrl={parsingRoute(ROUTES.USERS.DETAIL, {
+                                id: userId,
                             })}
-                            queryKeyPage="comment_page"
+                            queryKeyPage="post_page"
                         />
                     ) : null
                 }
@@ -41,8 +41,8 @@ export default function CardPostComments({ comments, postId }: IProps) {
                         </p>
                     </div>
                 ) : (
-                    comments.data.map((comment, index) => (
-                        <CardPostCommentItem comment={comment} key={index} />
+                    posts.data.map((post, index) => (
+                        <CardPostList key={index} post={post} />
                     ))
                 )}
             </Card>
