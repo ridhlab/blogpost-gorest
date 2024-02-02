@@ -11,7 +11,8 @@ export async function getCommentByPostId(
         routeWithParams(GOREST_ENDPOINT.COMMENTS.INDEX, {
             post_id: postId.toString(),
             ...query,
-        })
+        }),
+        { cache: "no-store" }
     );
     if (!response.ok) throw new Error(errorMessageServer.failedFetchData);
     return response.json();

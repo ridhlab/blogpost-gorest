@@ -20,7 +20,8 @@ const userDefault = (id): IUser => ({
 
 export async function getUserDetail(id: number): Promise<IUserResponseDetail> {
     const response = await fetch(
-        parsingRoute(GOREST_ENDPOINT.USERS.DETAIL, { id })
+        parsingRoute(GOREST_ENDPOINT.USERS.DETAIL, { id }),
+        { cache: "no-store" }
     );
     if (!response.ok) return { meta: null, data: userDefault(id) };
     return response.json();
@@ -30,7 +31,8 @@ export async function getUserIndex(
     query?: Record<string, string>
 ): Promise<IUserResponseIndex> {
     const response = await fetch(
-        routeWithParams(GOREST_ENDPOINT.USERS.INDEX, query ?? {})
+        routeWithParams(GOREST_ENDPOINT.USERS.INDEX, query ?? {}),
+        { cache: "no-store" }
     );
     if (!response.ok) throw new Error(errorMessageServer.failedFetchData);
     return response.json();
