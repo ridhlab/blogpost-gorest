@@ -6,6 +6,7 @@ import {
     IPostResponseDetail,
     IPostResponseIndex,
 } from "@/interfaces/responses/post";
+import { cacheConfig } from "../base";
 
 // Note: This variable will override post if response is not found
 const postDefault = (id): IPost => ({
@@ -20,7 +21,7 @@ export async function getPostIndex(
 ): Promise<IPostResponseIndex> {
     const response = await fetch(
         routeWithParams(GOREST_ENDPOINT.POSTS.INDEX, query ?? {}),
-        { cache: "no-store" }
+        { ...cacheConfig }
     );
     if (!response.ok) throw new Error(errorMessageServer.failedFetchData);
     return response.json();
@@ -29,7 +30,7 @@ export async function getPostIndex(
 export async function getPostDetail(id: number): Promise<IPostResponseDetail> {
     const response = await fetch(
         parsingRoute(GOREST_ENDPOINT.POSTS.DETAIL, { id: id.toString() }),
-        { cache: "no-store" }
+        { ...cacheConfig }
     );
     if (!response.ok) return { meta: null, data: postDefault(id) };
     return response.json();
