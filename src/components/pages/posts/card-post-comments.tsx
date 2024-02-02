@@ -6,12 +6,15 @@ import { ICommentResponseIndex } from "@/interfaces/responses/comment";
 import CardPostCommentItem from "./card-post-comment-item";
 import Pagination from "@/components/shared/pagination/pagination";
 import { BsDatabaseFillSlash } from "react-icons/bs";
+import { ROUTES } from "@/constants/route";
+import { parsingRoute } from "@/helpers/route";
 
 interface IProps {
     comments: ICommentResponseIndex;
+    postId: number;
 }
 
-export default function CardPostComments({ comments }: IProps) {
+export default function CardPostComments({ comments, postId }: IProps) {
     const isEmpty = comments.data.length === 0;
     return (
         <Slide delay={0.4}>
@@ -22,6 +25,10 @@ export default function CardPostComments({ comments }: IProps) {
                         <Pagination
                             currentPage={comments.meta.pagination.page}
                             totalPage={comments.meta.pagination.pages}
+                            baseUrl={parsingRoute(ROUTES.POSTS.DETAIL, {
+                                id: postId,
+                            })}
+                            queryKeyPage="comment_page"
                         />
                     ) : null
                 }

@@ -12,7 +12,9 @@ export default async function PostDetail({
 }) {
     const post = await getPostDetail(parseInt(params.id));
     const author = await getUserDetail(post.data.user_id);
-    const comments = await getCommentByPostId(parseInt(params.id));
+    const comments = await getCommentByPostId(parseInt(params.id), {
+        page: searchParams.comment_page,
+    });
     return (
         <PostDetailTemplate
             post={post.data}

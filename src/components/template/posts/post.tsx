@@ -1,11 +1,12 @@
 "use client";
-import { getUserDetail } from "@/api/users";
+
 import { BREADCRUMBS } from "@/common/breadcrumb";
 import CardPostList from "@/components/pages/posts/card-post-list";
 import Breadcrumbs from "@/components/shared/breadcrumbs/breadcrumbs";
 import Card from "@/components/shared/card/card";
 import Pagination from "@/components/shared/pagination/pagination";
 import Slide from "@/components/shared/slide/slide";
+import { ROUTES } from "@/constants/route";
 import { IPostResponseIndex } from "@/interfaces/responses/post";
 
 interface IProps {
@@ -36,7 +37,13 @@ export default function PostTemplate({ posts }: IProps) {
             <Slide delay={0.2}>
                 <Card
                     title={title}
-                    footer={<Pagination currentPage={page} totalPage={pages} />}
+                    footer={
+                        <Pagination
+                            currentPage={page}
+                            totalPage={pages}
+                            baseUrl={ROUTES.POSTS.INDEX}
+                        />
+                    }
                 >
                     {posts.data.map((post) => {
                         return <CardPostList key={post.id} post={post} />;

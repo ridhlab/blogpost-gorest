@@ -4,11 +4,13 @@ import { routeWithParams } from "@/helpers/route";
 import { ICommentResponseIndex } from "@/interfaces/responses/comment";
 
 export async function getCommentByPostId(
-    postId: number
+    postId: number,
+    query?: Record<string, string>
 ): Promise<ICommentResponseIndex> {
     const response = await fetch(
         routeWithParams(GOREST_ENDPOINT.COMMENTS.INDEX, {
             post_id: postId.toString(),
+            ...query,
         })
     );
     if (!response.ok) throw new Error(errorMessageServer.failedFetchData);
