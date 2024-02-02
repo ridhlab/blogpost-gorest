@@ -19,7 +19,8 @@ export async function getPostIndex(
     query?: Record<string, string>
 ): Promise<IPostResponseIndex> {
     const response = await fetch(
-        routeWithParams(GOREST_ENDPOINT.POSTS.INDEX, query ?? {})
+        routeWithParams(GOREST_ENDPOINT.POSTS.INDEX, query ?? {}),
+        { cache: "no-store" }
     );
     if (!response.ok) throw new Error(errorMessageServer.failedFetchData);
     return response.json();
@@ -27,7 +28,8 @@ export async function getPostIndex(
 
 export async function getPostDetail(id: number): Promise<IPostResponseDetail> {
     const response = await fetch(
-        parsingRoute(GOREST_ENDPOINT.POSTS.DETAIL, { id: id.toString() })
+        parsingRoute(GOREST_ENDPOINT.POSTS.DETAIL, { id: id.toString() }),
+        { cache: "no-store" }
     );
     if (!response.ok) return { meta: null, data: postDefault(id) };
     return response.json();
