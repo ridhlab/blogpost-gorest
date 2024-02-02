@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/global/navbar";
+import { AppProgressBar as ProgressBar } from "next-nprogress-bar";
+import Providers from "./provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,12 +20,14 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={inter.className + " bg-slate-200"}>
-                <Navbar />
-                <div className="my-12">
-                    <div className="md:px-20 px-8">
-                        <div className="max-w-6xl mx-auto">{children}</div>
+                <Providers>
+                    <Navbar />
+                    <div className="my-12">
+                        <div className="md:px-20 px-8">
+                            <div className="max-w-6xl mx-auto">{children}</div>
+                        </div>
                     </div>
-                </div>
+                </Providers>
             </body>
         </html>
     );
