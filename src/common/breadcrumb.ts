@@ -3,8 +3,12 @@ import { parsingRoute } from "@/helpers/route";
 
 export const BREADCRUMBS = {
     Users: {
-        Index: () => [{ label: "List User", href: ROUTES.USERS.INDEX }],
+        Index: () => [
+            { label: "~", href: ROUTES.HOME },
+            { label: "List User", href: ROUTES.USERS.INDEX },
+        ],
         Detail: (id: number) => [
+            { label: "~", href: ROUTES.HOME },
             { label: "List User", href: ROUTES.USERS.INDEX },
             {
                 label: "Detail User",
