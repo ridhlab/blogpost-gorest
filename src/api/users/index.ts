@@ -8,6 +8,7 @@ import {
     IUserResponseDetail,
     IUserResponseIndex,
 } from "@/interfaces/responses/user";
+import { cacheConfig } from "../base";
 
 // Note: This variable will override user if response is not found
 const userDefault = (id): IUser => ({
@@ -21,8 +22,9 @@ const userDefault = (id): IUser => ({
 export async function getUserDetail(id: number): Promise<IUserResponseDetail> {
     const response = await fetch(
         parsingRoute(GOREST_ENDPOINT.USERS.DETAIL, { id }),
-        { cache: "no-store" }
+        { ...cacheConfig }
     );
+
     if (!response.ok) return { meta: null, data: userDefault(id) };
     return response.json();
 }
@@ -32,7 +34,7 @@ export async function getUserIndex(
 ): Promise<IUserResponseIndex> {
     const response = await fetch(
         routeWithParams(GOREST_ENDPOINT.USERS.INDEX, query ?? {}),
-        { cache: "no-store" }
+        { ...cacheConfig }
     );
     if (!response.ok) throw new Error(errorMessageServer.failedFetchData);
     return response.json();

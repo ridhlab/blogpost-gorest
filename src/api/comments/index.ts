@@ -2,6 +2,7 @@ import { errorMessageServer } from "@/common/response-message";
 import { GOREST_ENDPOINT } from "@/constants/route";
 import { routeWithParams } from "@/helpers/route";
 import { ICommentResponseIndex } from "@/interfaces/responses/comment";
+import { cacheConfig } from "../base";
 
 export async function getCommentByPostId(
     postId: number,
@@ -12,7 +13,7 @@ export async function getCommentByPostId(
             post_id: postId.toString(),
             ...query,
         }),
-        { cache: "no-store" }
+        { ...cacheConfig }
     );
     if (!response.ok) throw new Error(errorMessageServer.failedFetchData);
     return response.json();
