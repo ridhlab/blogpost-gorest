@@ -19,3 +19,8 @@ export interface IBaseResponseDetail<T> {
     meta: unknown;
     data: T;
 }
+
+export interface IFieldError {
+    field: string;
+    message: string;
+}

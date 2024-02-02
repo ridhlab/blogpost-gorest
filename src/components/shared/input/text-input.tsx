@@ -28,7 +28,10 @@ export default function TextInput({ validation, ...restProps }: IProps) {
             : "active:border-blue-500 focus:border-blue-500";
     const filledClassnames = (() => {
         if (!validationExist && isFilled) return ["border-blue-500"];
-        if (validationExist && !mappingValidation?.isValid && isFilled)
+        if (
+            (validationExist && !mappingValidation?.isValid && isFilled) ||
+            (validationExist && !mappingValidation?.isValid && !isFilled)
+        )
             return ["border-red-500"];
         if (validationExist && mappingValidation?.isValid && isFilled)
             return ["border-blue-500"];
@@ -62,25 +65,21 @@ export default function TextInput({ validation, ...restProps }: IProps) {
         />
     );
 
-    if (validationExist) {
-        return (
-            <div className="flex flex-col gap-y-1">
-                {inputBase}
-                <span
-                    className={twMerge(
-                        clsx([
-                            "text-xs text-red-500 transition-all",
-                            !mappingValidation?.isValid
-                                ? "opacity-100 h-4"
-                                : "opacity-100 h-0",
-                        ])
-                    )}
-                >
-                    {mappingValidation?.message}
-                </span>
-            </div>
-        );
-    }
-
-    return inputBase;
+    return (
+        <div className="flex flex-col gap-y-1">
+            {inputBase}
+            <span
+                className={twMerge(
+                    clsx([
+                        "text-xs text-red-500 transition-all",
+                        validationExist && !mappingValidation?.isValid
+                            ? "opacity-100 h-4"
+                            : "opacity-100 h-0",
+                    ])
+                )}
+            >
+                {mappingValidation?.message}
+            </span>
+        </div>
+    );
 }

@@ -1,3 +1,5 @@
+"use server";
+
 import { errorMessageServer } from "@/common/response-message";
 import { GOREST_ENDPOINT } from "@/constants/route";
 import { ActivateStatusEnum } from "@/enums/activate-status";
@@ -9,6 +11,7 @@ import {
     IUserResponseIndex,
 } from "@/interfaces/responses/user";
 import { cacheConfig } from "../base";
+import { IUserCreateRequest } from "@/interfaces/requests/user";
 
 // Note: This variable will override user if response is not found
 const userDefault = (id): IUser => ({
@@ -38,4 +41,34 @@ export async function getUserIndex(
     );
     if (!response.ok) throw new Error(errorMessageServer.failedFetchData);
     return response.json();
+}
+
+export async function createUser(formData: FormData) {
+    const response = await fetch(GOREST_ENDPOINT.USERS.INDEX, {
+        method: "POST",
+        headers: {
+            Authorization: `Bearer ${process.env.GOREST_TOKEN}`,
+        },
+        body: formData,
+    });
+    const jsonResponse = await response.json();
+    if (!response.ok) {
+        if (response.status === 422) {
+            return {
+                message: "Data not valid",
+                status: response.status,
+                data: jsonResponse.data,
+            };
+        }
+        return {
+            message: "Something went wrong",
+            status: response.status,
+            data: jsonResponse.data,
+        };
+    }
+    return {
+        message: "Success Created Data",
+        status: response.status,
+        data: jsonResponse.data,
+    };
 }
