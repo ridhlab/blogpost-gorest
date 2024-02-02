@@ -1,7 +1,7 @@
 import { ROUTES } from "@/constants/route";
 import { parsingRoute } from "@/helpers/route";
 
-export const Breadcrubms = {
+export const BREADCRUMBS = {
     Users: {
         Index: () => [{ label: "List User", href: ROUTES.USERS.INDEX }],
         Detail: (id: number) => [
@@ -13,12 +13,16 @@ export const Breadcrubms = {
         ],
     },
     Post: {
-        Index: () => [{ label: "List Post", href: ROUTES.POSTS.INDEX }],
+        Index: () => [
+            { label: "~", href: ROUTES.HOME },
+            { label: "List Post", href: ROUTES.POSTS.INDEX },
+        ],
         Detail: (id: number) => [
+            { label: "~", href: ROUTES.HOME },
             { label: "List Post", href: ROUTES.POSTS.INDEX },
             {
                 label: "Detail Post",
-                href: parsingRoute(ROUTES.POSTS.INDEX, { id }),
+                href: parsingRoute(ROUTES.POSTS.DETAIL, { id }),
             },
         ],
     },
