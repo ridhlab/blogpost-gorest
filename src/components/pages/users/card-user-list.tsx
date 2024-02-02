@@ -33,8 +33,10 @@ export default function CardUserList({ user }: IProps) {
         </div>
     );
 
+    const title = <h4 className="font-semibold text-base">{user.name}</h4>;
+
     return (
-        <Card clsx={["border"]} title={user.name} footer={footer}>
+        <Card clsx={["border"]} title={title} footer={footer}>
             <div className="flex flex-wrap text-sm gap-x-4">
                 <p>Email : {user.email}</p>
                 <p>Gender : {capitalizeWord(user.gender)}</p>
