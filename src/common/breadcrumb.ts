@@ -12,7 +12,7 @@ export const BREADCRUMBS = {
             { label: "List User", href: ROUTES.USERS.INDEX },
             {
                 label: "Detail User",
-                href: parsingRoute(ROUTES.USERS.INDEX, { id }),
+                href: parsingRoute(ROUTES.USERS.DETAIL, { id }),
             },
         ],
     },

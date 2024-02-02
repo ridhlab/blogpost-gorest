@@ -10,19 +10,19 @@ import {
 } from "@/interfaces/responses/user";
 
 // Note: This variable will override user if response is not found
-const userDefault: IUser = {
+const userDefault = (id): IUser => ({
     email: "defaultuser@gmail.com",
     gender: GenderEnum.MALE,
     name: "Default User",
-    id: 1,
+    id: id,
     status: ActivateStatusEnum.ACTIVE,
-};
+});
 
 export async function getUserDetail(id: number): Promise<IUserResponseDetail> {
     const response = await fetch(
         parsingRoute(GOREST_ENDPOINT.USERS.DETAIL, { id })
     );
-    if (!response.ok) return { meta: null, data: userDefault };
+    if (!response.ok) return { meta: null, data: userDefault(id) };
     return response.json();
 }
 

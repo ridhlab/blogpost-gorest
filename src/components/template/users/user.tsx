@@ -57,10 +57,7 @@ export default function UserTemplate({ users }: IProps) {
                     />
                 </div>
                 <div>
-                    <Button
-                        clsx={["rounded-full"]}
-                        icon={<BiPlusCircle />}
-                    ></Button>
+                    <Button icon={<BiPlusCircle />}></Button>
                 </div>
             </div>
         </div>
