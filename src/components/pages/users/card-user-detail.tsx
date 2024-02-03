@@ -14,7 +14,7 @@ export default function CardUserDetail({ user }: IProps) {
     return (
         <Slide delay={0.2}>
             <Card title={"Detail User"}>
-                <div className="text-sm flex flex-col gap-y-2">
+                <div className="flex flex-col gap-y-2">
                     <span>Name : {user.name}</span>
                     <span>Email : {user.email}</span>
                     <span>Gender : {capitalizeWord(user.gender)}</span>

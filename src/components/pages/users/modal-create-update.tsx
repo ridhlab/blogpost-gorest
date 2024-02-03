@@ -141,7 +141,7 @@ export default function ModalCreateUpdate({
                     </div>
                 }
             >
-                <div className="flex flex-col gap-y-2 text-sm">
+                <div className="flex flex-col gap-y-2">
                     <div className="flex flex-col gap-y-1">
                         <label>Name</label>
                         <TextInput

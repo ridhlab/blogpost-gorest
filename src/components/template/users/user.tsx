@@ -42,8 +42,8 @@ export default function UserTemplate({ users }: IProps) {
     const title = (
         <div className="flex justify-between">
             <div className="flex flex-col gap-y-2">
-                <h3 className="font-semibold text-lg">Post List</h3>
-                <div className="text-xs text-slate-500 flex flex-wrap gap-x-4">
+                <h3 className="font-semibold text-lg">User List</h3>
+                <div className="text-sm text-slate-500 flex flex-wrap gap-x-4">
                     <p>Page : {page}</p>
                     <p>
                         Ranges : {fromData} to {toData}
@@ -52,7 +52,7 @@ export default function UserTemplate({ users }: IProps) {
                 </div>
             </div>
             <div className="flex gap-x-2">
-                <div className="text-sm">
+                <div>
                     <TextInput
                         placeholder="Search user"
                         onChange={handleSeach}
@@ -92,7 +92,7 @@ export default function UserTemplate({ users }: IProps) {
                     {isEmpty ? (
                         <div className="flex flex-col items-center">
                             <BsDatabaseFillSlash className="text-slate-300 text-6xl" />
-                            <p className="text-slate-300 font-semibold text-sm">
+                            <p className="text-slate-300 font-semibold">
                                 Empty Data
                             </p>
                         </div>
