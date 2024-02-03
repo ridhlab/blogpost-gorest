@@ -40,7 +40,7 @@ export default function UserTemplate({ users }: IProps) {
     };
 
     const title = (
-        <div className="flex justify-between">
+        <div className="flex justify-between md:flex-row flex-col gap gap-y-2">
             <div className="flex flex-col gap-y-2">
                 <h3 className="font-semibold text-lg">User List</h3>
                 <div className="text-sm text-slate-500 flex flex-wrap gap-x-4">
@@ -52,7 +52,7 @@ export default function UserTemplate({ users }: IProps) {
                 </div>
             </div>
             <div className="flex gap-x-2">
-                <div>
+                <div className="flex-1">
                     <TextInput
                         placeholder="Search user"
                         onChange={handleSeach}
