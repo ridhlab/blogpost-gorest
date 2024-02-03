@@ -14,6 +14,7 @@ import { deleteUser } from "@/api/users";
 
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
+import { useRouter } from "next/navigation";
 
 interface IProps {
     user: IUser;
@@ -21,6 +22,7 @@ interface IProps {
 
 export default function CardUserList({ user }: IProps) {
     const [openEdit, setOpenEdit] = React.useState(false);
+    const router = useRouter();
 
     const handleDelete = () => {
         Swal.fire({
@@ -33,6 +35,7 @@ export default function CardUserList({ user }: IProps) {
             if (result.isConfirmed) {
                 const res = await deleteUser(user.id);
                 if (res.status === 404) return toast.error(res.message);
+                router.push(ROUTES.USERS.INDEX);
                 return toast.success(res.message);
             }
         });
