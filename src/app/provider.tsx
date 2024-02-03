@@ -1,12 +1,13 @@
 "use client";
 import { AppProgressBar } from "next-nprogress-bar";
 import { ToastContainer } from "react-toastify";
+import { Suspense } from "react";
 
 import "react-toastify/dist/ReactToastify.css";
 
 export default function Providers({ children }) {
     return (
-        <>
+        <Suspense>
             {children}
             <AppProgressBar
                 height="4px"
@@ -16,6 +17,6 @@ export default function Providers({ children }) {
             />
 
             <ToastContainer />
-        </>
+        </Suspense>
     );
 }
