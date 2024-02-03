@@ -7,7 +7,7 @@ interface IProps {
 
 export default function Breadcrumbs({ items }: IProps) {
     return (
-        <ul className="flex flex-wrap gap-x-4 text-sm">
+        <ul className="flex flex-wrap gap-x-4">
             {items.map(({ href, label }, index) => (
                 <React.Fragment key={index}>
                     <li>

@@ -21,7 +21,7 @@ export default function PostTemplate({ posts }: IProps) {
     const title = (
         <div className="flex flex-col gap-y-2">
             <h3 className="font-semibold text-lg">Post List</h3>
-            <div className="text-xs text-slate-500 flex flex-wrap gap-x-4">
+            <div className="text-sm text-slate-500 flex flex-wrap gap-x-4">
                 <p>Page : {page}</p>
                 <p>
                     Ranges : {fromData} to {toData}

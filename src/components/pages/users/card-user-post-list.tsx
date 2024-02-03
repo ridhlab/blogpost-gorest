@@ -36,7 +36,7 @@ export default function CardUserPostList({ posts, userId }: IProps) {
                 {isEmpty ? (
                     <div className="flex flex-col items-center">
                         <BsDatabaseFillSlash className="text-slate-300 text-6xl" />
-                        <p className="text-slate-300 font-semibold text-sm">
+                        <p className="text-slate-300 font-semibold">
                             Empty Data
                         </p>
                     </div>

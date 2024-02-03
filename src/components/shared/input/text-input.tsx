@@ -1,6 +1,6 @@
 "use client";
 
-import clsx from "clsx";
+import clsx, { ClassValue } from "clsx";
 import React, { ChangeEvent, HTMLAttributes, InputHTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
 
@@ -11,9 +11,14 @@ interface IMappingValidation {
 
 interface IProps extends InputHTMLAttributes<HTMLInputElement> {
     validation?: { isValid: boolean; message: string };
+    clsx?: ClassValue[];
 }
 
-export default function TextInput({ validation, ...restProps }: IProps) {
+export default function TextInput({
+    validation,
+    clsx: customClassnames,
+    ...restProps
+}: IProps) {
     const [isFilled, setIsFilled] = React.useState(false);
 
     const validationExist = !!validation;
@@ -39,6 +44,7 @@ export default function TextInput({ validation, ...restProps }: IProps) {
         baseClassnames,
         borderActiveFocusClassnames,
         filledClassnames,
+        ...(customClassnames ?? []),
     ];
 
     const onChange = (e: ChangeEvent<HTMLInputElement>) => {
