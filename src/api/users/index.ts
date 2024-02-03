@@ -72,3 +72,43 @@ export async function createUser(formData: FormData) {
         data: jsonResponse.data,
     };
 }
+
+export async function updateUser(formData: FormData, userId: number) {
+    const response = await fetch(
+        parsingRoute(GOREST_ENDPOINT.USERS.DETAIL, { id: userId }),
+        {
+            method: "PUT",
+            headers: {
+                Authorization: `Bearer ${process.env.GOREST_TOKEN}`,
+            },
+            body: formData,
+        }
+    );
+    if (response.status === 404) {
+        return {
+            message: "User Not Found",
+            status: response.status,
+            data: null,
+        };
+    }
+    const jsonResponse = await response.json();
+    if (!response.ok) {
+        if (response.status === 422) {
+            return {
+                message: "Data not valid",
+                status: response.status,
+                data: jsonResponse.data,
+            };
+        }
+        return {
+            message: "Something went wrong",
+            status: response.status,
+            data: jsonResponse?.data,
+        };
+    }
+    return {
+        message: "Success Updated Data",
+        status: response.status,
+        data: jsonResponse.data,
+    };
+}

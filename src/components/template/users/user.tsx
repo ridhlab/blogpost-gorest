@@ -4,6 +4,7 @@ import { BREADCRUMBS } from "@/common/breadcrumb";
 import CardUserList from "@/components/pages/users/card-user-list";
 import ModalCreateUpdate from "@/components/pages/users/modal-create-update";
 import Breadcrumbs from "@/components/shared/breadcrumbs/breadcrumbs";
+import Button from "@/components/shared/button/button";
 import Card from "@/components/shared/card/card";
 import TextInput from "@/components/shared/input/text-input";
 import Pagination from "@/components/shared/pagination/pagination";
@@ -12,7 +13,7 @@ import { ROUTES } from "@/constants/route";
 import { routeWithParams } from "@/helpers/route";
 import { IUserResponseIndex } from "@/interfaces/responses/user";
 import { useRouter } from "next/navigation";
-import { ChangeEvent } from "react";
+import React, { ChangeEvent } from "react";
 import { BiPlusCircle } from "react-icons/bi";
 import { BsDatabaseFillSlash } from "react-icons/bs";
 
@@ -30,6 +31,8 @@ export default function UserTemplate({ users }: IProps) {
     const router = useRouter();
 
     const isEmpty = users.data.length === 0;
+
+    const [openModalCreate, setOpenModalCreate] = React.useState(false);
 
     const handleSeach = async (e: ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
@@ -55,8 +58,17 @@ export default function UserTemplate({ users }: IProps) {
                         onChange={handleSeach}
                     />
                 </div>
-
-                <ModalCreateUpdate type="create" />
+                <div>
+                    <Button
+                        icon={<BiPlusCircle />}
+                        onClick={() => setOpenModalCreate(true)}
+                    ></Button>
+                    <ModalCreateUpdate
+                        type="create"
+                        open={openModalCreate}
+                        setOpen={setOpenModalCreate}
+                    />
+                </div>
             </div>
         </div>
     );

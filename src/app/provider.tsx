@@ -1,5 +1,6 @@
 "use client";
 import { AppProgressBar } from "next-nprogress-bar";
+import { ToastContainer } from "react-toastify";
 
 export default function Providers({ children }) {
     return (
@@ -11,6 +12,8 @@ export default function Providers({ children }) {
                 options={{ showSpinner: false }}
                 shallowRouting
             />
+
+            <ToastContainer />
         </>
     );
 }
