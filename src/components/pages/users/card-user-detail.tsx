@@ -13,18 +13,7 @@ interface IProps {
 export default function CardUserDetail({ user }: IProps) {
     return (
         <Slide delay={0.2}>
-            <Card
-                title={
-                    <div className="flex justify-between">
-                        <h4 className="font-semibold">Detail User</h4>
-                        <Button
-                            icon={<FaEdit />}
-                            size="small"
-                            variant="outline"
-                        ></Button>
-                    </div>
-                }
-            >
+            <Card title={"Detail User"}>
                 <div className="text-sm flex flex-col gap-y-2">
                     <span>Name : {user.name}</span>
                     <span>Email : {user.email}</span>

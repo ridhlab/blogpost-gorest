@@ -8,7 +8,7 @@ interface IProps extends HTMLAttributes<HTMLButtonElement> {
     size?: "normal" | "small";
     variant?: "outline" | "solid";
     htmlType?: HTMLButtonElement["type"];
-    color?: "primary" | "neutral";
+    color?: "primary" | "neutral" | "danger";
     block?: boolean;
     clsx?: ClassValue[];
     href?: string;
@@ -40,9 +40,7 @@ export default function Button({
             return "px-4 py-2";
         }
         if (size === "small") {
-            {
-                return "px-2 py-1";
-            }
+            return "px-2 py-1";
         }
     })();
     const colorClassnames = (() => {
@@ -52,11 +50,17 @@ export default function Button({
         if (variant === "outline" && color === "neutral") {
             return "border-slate-500 text-slate-500";
         }
+        if (variant === "outline" && color === "danger") {
+            return "border-red-500 text-red-500";
+        }
         if (variant === "solid" && color === "primary") {
             return "bg-blue-500 text-white";
         }
         if (variant === "solid" && color === "neutral") {
             return "bg-slate-500 text-white";
+        }
+        if (variant === "solid" && color === "danger") {
+            return "bg-red-500 text-white";
         }
     })();
     const blockClassnames = block ? "w-full" : "";
