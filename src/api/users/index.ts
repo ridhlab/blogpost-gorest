@@ -11,7 +11,6 @@ import {
     IUserResponseIndex,
 } from "@/interfaces/responses/user";
 import { cacheConfig } from "../base";
-import { IUserCreateRequest } from "@/interfaces/requests/user";
 
 // Note: This variable will override user if response is not found
 const userDefault = (id): IUser => ({
@@ -110,5 +109,36 @@ export async function updateUser(formData: FormData, userId: number) {
         message: "Success Updated Data",
         status: response.status,
         data: jsonResponse.data,
+    };
+}
+
+export async function deleteUser(userId: number) {
+    const response = await fetch(
+        parsingRoute(GOREST_ENDPOINT.USERS.DETAIL, { id: userId }),
+        {
+            method: "DELETE",
+            headers: {
+                Authorization: `Bearer ${process.env.GOREST_TOKEN}`,
+            },
+        }
+    );
+    if (!response.ok) {
+        if (response.status === 404) {
+            return {
+                message: "Data not found",
+                status: response.status,
+                data: null,
+            };
+        }
+        return {
+            message: "Something went wrong",
+            status: response.status,
+            data: null,
+        };
+    }
+    return {
+        message: "Success Deleted  Data",
+        status: response.status,
+        data: null,
     };
 }

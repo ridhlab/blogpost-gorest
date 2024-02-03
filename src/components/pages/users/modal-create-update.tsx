@@ -15,9 +15,7 @@ import {
 } from "@/interfaces/requests/user";
 import { useRouter } from "next/navigation";
 import React from "react";
-
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { z } from "zod";
 
 interface IProps {
