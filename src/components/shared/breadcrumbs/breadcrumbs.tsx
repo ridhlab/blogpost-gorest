@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 
 interface IProps {
-    items: { label: string; href: string }[];
+    items: { label: string | React.ReactNode; href: string }[];
 }
 
 export default function Breadcrumbs({ items }: IProps) {
@@ -10,7 +10,7 @@ export default function Breadcrumbs({ items }: IProps) {
         <ul className="flex flex-wrap gap-x-4">
             {items.map(({ href, label }, index) => (
                 <React.Fragment key={index}>
-                    <li>
+                    <li className="flex items-center">
                         <Link
                             className="hover:text-blue-500 transition-all"
                             href={href}

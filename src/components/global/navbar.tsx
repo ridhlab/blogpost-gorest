@@ -31,18 +31,22 @@ export default function Navbar() {
     const menu = (
         <ul className="flex items-center gap-x-8">
             {menus.map(({ href, MenuIcon, label }, index) => {
+                const menuActive = href === pathname;
                 return (
-                    <li key={index}>
+                    <li
+                        key={index}
+                        className={`md:py-4 border-b-2 border-t-2 border-t-[#0000] ${
+                            menuActive ? "border-blue-500" : "border-[#0000]"
+                        }`}
+                    >
                         <Link
                             href={href}
-                            className={`flex items-center gap-x-1 group ${
-                                href === pathname ? "text-blue-500" : ""
-                            }`}
+                            className={`flex items-center gap-x-1 group`}
                         >
                             <span>{label}</span>
                             <MenuIcon
                                 className={`group-hover:text-blue-500 transition-all ${
-                                    href === pathname
+                                    menuActive
                                         ? "text-blue-500"
                                         : "text-blue-300 "
                                 }`}
@@ -55,7 +59,7 @@ export default function Navbar() {
     );
 
     return (
-        <header className="bg-white md:px-20 py-4 px-8 sticky top-0 shadow">
+        <header className="bg-white md:px-20 py-4 md:py-0 px-8 sticky top-0 shadow">
             <div className="max-w-6xl mx-auto flex items-center justify-between">
                 <Link href={ROUTES.HOME}>
                     <LogoNavbar />

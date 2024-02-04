@@ -1,14 +1,15 @@
 import { ROUTES } from "@/constants/route";
 import { parsingRoute } from "@/helpers/route";
+import { IoHomeSharp } from "react-icons/io5";
 
 export const BREADCRUMBS = {
     Users: {
         Index: () => [
-            { label: "~", href: ROUTES.HOME },
+            { label: <IoHomeSharp />, href: ROUTES.HOME },
             { label: "List User", href: ROUTES.USERS.INDEX },
         ],
         Detail: (id: number) => [
-            { label: "~", href: ROUTES.HOME },
+            { label: <IoHomeSharp />, href: ROUTES.HOME },
             { label: "List User", href: ROUTES.USERS.INDEX },
             {
                 label: "Detail User",
@@ -18,11 +19,11 @@ export const BREADCRUMBS = {
     },
     Post: {
         Index: () => [
-            { label: "~", href: ROUTES.HOME },
+            { label: <IoHomeSharp />, href: ROUTES.HOME },
             { label: "List Post", href: ROUTES.POSTS.INDEX },
         ],
         Detail: (id: number) => [
-            { label: "~", href: ROUTES.HOME },
+            { label: <IoHomeSharp />, href: ROUTES.HOME },
             { label: "List Post", href: ROUTES.POSTS.INDEX },
             {
                 label: "Detail Post",
