@@ -28,7 +28,7 @@ export default function MobileMenu({
 
     const drawer = (
         <div
-            className={`md:hidden fixed left-0 top-0 right-0 bottom-0 z-10 transform duration-[600ms] ease-[cubic-bezier(0.7,0,0,1)] bg-white ${
+            className={`md:hidden fixed left-0 top-0 right-0 bottom-0 z-10 transform duration-[600ms] ease-[cubic-bezier(0.7,0,0,1)] bg-white dark:bg-slate-950 ${
                 showNav ? "translate-x-0 rounded-none" : "translate-x-full"
             }`}
         >
@@ -38,7 +38,7 @@ export default function MobileMenu({
                     <button
                         aria-label="Toggle Menu"
                         onClick={onToggleNav}
-                        className={`md:hidden dark:bg-primary-bg bg-secondary-bg border  border-zinc-200 rounded-full p-2 duration-500 ${
+                        className={`md:hidden dark:bg-primary-bg bg-secondary-bg border  border-zinc-200 dark:border-zinc-700 rounded-full p-2 duration-500 ${
                             !showNav ? "-rotate-[360deg]" : null
                         }`}
                     >
@@ -47,7 +47,10 @@ export default function MobileMenu({
                 </div>
                 <ul className="flex flex-col gap-y-6">
                     {menus.map(({ href, MenuIcon, label }, index) => (
-                        <li key={index} className="border-b border-zinc-300 ">
+                        <li
+                            key={index}
+                            className="border-b border-zinc-300 dark:border-zinc-700"
+                        >
                             <Link
                                 href={href}
                                 onClick={onToggleNav}
@@ -67,7 +70,7 @@ export default function MobileMenu({
 
     const btnHamburger = (
         <button
-            className="border rounded p-2 hover:text-blue-500 transition-all hover:border-blue-500"
+            className="border rounded p-2 hover:text-blue-500 transition-all hover:border-blue-500 dark:border-zinc-700"
             onClick={onToggleNav}
         >
             <GiHamburgerMenu />

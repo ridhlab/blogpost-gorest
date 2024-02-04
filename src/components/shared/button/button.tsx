@@ -28,7 +28,7 @@ export default function Button({
     ...props
 }: IProps) {
     const baseClassnames =
-        "border rounded font-semibold flex items-center justify-center gap-x-1";
+        "rounded font-semibold flex items-center justify-center gap-x-1";
     const paddingClassnames = (() => {
         if (icon && size === "normal") {
             return "p-2";
@@ -45,13 +45,13 @@ export default function Button({
     })();
     const colorClassnames = (() => {
         if (variant === "outline" && color === "primary") {
-            return "border-blue-500 text-blue-500";
+            return "border border-blue-500 text-blue-500";
         }
         if (variant === "outline" && color === "neutral") {
-            return "border-slate-500 text-slate-500";
+            return "border border-slate-500 text-slate-500 dark:border-slate-400 dark:text-slate-400";
         }
         if (variant === "outline" && color === "danger") {
-            return "border-red-500 text-red-500";
+            return "border border-red-500 text-red-500";
         }
         if (variant === "solid" && color === "primary") {
             return "bg-blue-500 text-white";

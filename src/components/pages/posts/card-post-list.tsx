@@ -19,7 +19,7 @@ export default function CardPostList({ post }: IProps) {
 
     return (
         <Card
-            clsx={["border"]}
+            clsx={["border dark:border-zinc-700"]}
             title={
                 <div className="flex flex-col gap-y-1">
                     <h4 className="font-semibold">{post.title}</h4>

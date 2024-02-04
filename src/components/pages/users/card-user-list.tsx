@@ -91,7 +91,11 @@ export default function CardUserList({ user }: IProps) {
     );
 
     return (
-        <Card clsx={["border"]} title={title} footer={footer}>
+        <Card
+            clsx={["border dark:border-zinc-700"]}
+            title={title}
+            footer={footer}
+        >
             <div className="flex flex-wrap gap-x-4 text-red">
                 <p>Email : {user.email}</p>
                 <p>Gender : {capitalizeWord(user.gender)}</p>

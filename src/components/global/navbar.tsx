@@ -6,6 +6,7 @@ import { FaTachometerAlt, FaUsersCog } from "react-icons/fa";
 import { IoIosBookmarks } from "react-icons/io";
 import MobileMenu from "./mobile-menu";
 import LogoNavbar from "./logo-navbar";
+import ButtonTheme from "./button-theme";
 
 const menus = [
     {
@@ -59,15 +60,20 @@ export default function Navbar() {
     );
 
     return (
-        <header className="bg-white md:px-20 py-4 md:py-0 px-8 sticky top-0 shadow">
+        <header className="bg-white md:px-20 py-4 md:py-0 px-8 sticky top-0 shadow dark:bg-slate-950">
             <div className="max-w-6xl mx-auto flex items-center justify-between">
                 <Link href={ROUTES.HOME}>
                     <LogoNavbar />
                 </Link>
 
                 <nav className="md:block hidden">{menu}</nav>
-
-                <div className="md:hidden block">
+                <div className="hidden md:flex items-center">
+                    <ButtonTheme />
+                </div>
+                <div className="md:hidden flex gap-x-4">
+                    <div className="flex items-center">
+                        <ButtonTheme />
+                    </div>
                     <MobileMenu menus={menus} />
                 </div>
             </div>

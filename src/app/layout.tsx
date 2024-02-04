@@ -19,7 +19,9 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={inter.className + " bg-slate-200"}>
+            <body
+                className={inter.className + "  bg-slate-200 dark:bg-slate-700"}
+            >
                 <Providers>
                     <Navbar />
                     <div className="my-12">
