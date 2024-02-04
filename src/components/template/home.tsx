@@ -13,7 +13,7 @@ export default function HomeTemplate({
     return (
         <main>
             <Card title="Homepage">
-                <div className="flex gap-x-4">
+                <div className="flex gap-4 md:flex-row flex-col ">
                     <Card
                         title="Post"
                         clsx={["border dark:border-zinc-700 flex-1"]}
