@@ -89,5 +89,11 @@ export default function Button({
         </button>
     );
 
-    return href ? <Link href={href}>{btn}</Link> : btn;
+    return href ? (
+        <div className="flex">
+            <Link href={href}>{btn}</Link>
+        </div>
+    ) : (
+        btn
+    );
 }
