@@ -24,7 +24,7 @@ export default function Modal({
     footer,
 }: IProps) {
     const baseClassnames =
-        "fixed top-0 bottom-0 right-0 left-0 bg-[#00000094] md:px-12 px-4 transition-all ease-in-out duration-500";
+        "fixed top-0 bottom-0 right-0 left-0 bg-[#00000094] md:px-12 px-4 transition-all ease-in-out duration-500 dark:bg-[#6e6e6e94]";
 
     const visibilityClassnames = open ? "opacity-1" : "opacity-0 h-0";
 
