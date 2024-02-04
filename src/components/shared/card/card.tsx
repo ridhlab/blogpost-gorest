@@ -24,17 +24,21 @@ export default function Card({
             titleNode
         );
 
+    const dividerNode = (
+        <div className="h-[1px] bg-zinc-200 dark:bg-zinc-700"></div>
+    );
+
     return (
         <div
             className={clsx([
-                "bg-white p-4 rounded flex flex-col gap-y-4",
+                "bg-white dark:bg-slate-950 p-4 rounded flex flex-col gap-y-4",
                 ...(customClassnames ?? []),
             ])}
         >
             {title ? title : null}
-            {divider && title ? <hr /> : null}
+            {divider && title ? dividerNode : null}
             {children}
-            {divider && footer ? <hr /> : null}
+            {divider && footer ? dividerNode : null}
             {footer ? footer : null}
         </div>
     );

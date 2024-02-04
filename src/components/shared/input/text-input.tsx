@@ -24,20 +24,21 @@ export default function TextInput({
     const validationExist = !!validation;
 
     const baseClassnames =
-        "rounded p-2 border outline-none active:outline-none focus:outline-none transition-all";
+        "rounded p-2 border outline-none active:outline-none focus:outline-none transition-all dark:bg-slate-950  dark:border-zinc-700";
     const borderActiveFocusClassnames =
         validationExist && !validation?.isValid
-            ? "active:border-red-500 focus:border-red-500"
-            : "active:border-blue-500 focus:border-blue-500";
+            ? "active:border-red-500 focus:border-red-500 dark:active:border-red-500 dark:focus:border-red-500"
+            : "active:border-blue-500 focus:border-blue-500 dark:active:border-blue-500 dark:focus:border-blue-500";
     const filledClassnames = (() => {
-        if (!validationExist && isFilled) return ["border-blue-500"];
+        if (!validationExist && isFilled)
+            return ["border-blue-500 dark:border-blue-500"];
         if (
             (validationExist && !validation?.isValid && isFilled) ||
             (validationExist && !validation?.isValid && !isFilled)
         )
-            return ["border-red-500"];
+            return ["border-red-500 dark:border-red-500"];
         if (validationExist && validation?.isValid && isFilled)
-            return ["border-blue-500"];
+            return ["border-blue-500 dark:border-blue-500"];
     })();
 
     const mergedClassnames = [

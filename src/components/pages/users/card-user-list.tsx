@@ -3,7 +3,6 @@ import Button from "@/components/shared/button/button";
 import Card from "@/components/shared/card/card";
 import { ROUTES } from "@/constants/route";
 import { parsingRoute } from "@/helpers/route";
-import { capitalizeWord } from "@/helpers/string";
 import { IUser } from "@/interfaces/entities/user";
 import React from "react";
 import { BsEyeFill } from "react-icons/bs";
@@ -15,6 +14,9 @@ import { deleteUser } from "@/api/users";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
+import Tag from "@/components/shared/tag/tag";
+import { GenderEnum } from "@/enums/gender";
+import { ActivateStatusEnum } from "@/enums/activate-status";
 
 interface IProps {
     user: IUser;
@@ -91,11 +93,35 @@ export default function CardUserList({ user }: IProps) {
     );
 
     return (
-        <Card clsx={["border"]} title={title} footer={footer}>
+        <Card
+            clsx={["border dark:border-zinc-700"]}
+            title={title}
+            footer={footer}
+        >
             <div className="flex flex-wrap gap-x-4 text-red">
                 <p>Email : {user.email}</p>
-                <p>Gender : {capitalizeWord(user.gender)}</p>
-                <p>Status : {capitalizeWord(user.status)}</p>
+                <p>
+                    Gender :{" "}
+                    <Tag
+                        label={user.gender}
+                        color={
+                            user.gender === GenderEnum.MALE
+                                ? "primary"
+                                : "success"
+                        }
+                    />
+                </p>
+                <p>
+                    Status :{" "}
+                    <Tag
+                        label={user.status}
+                        color={
+                            user.status === ActivateStatusEnum.ACTIVE
+                                ? "success"
+                                : "danger"
+                        }
+                    />
+                </p>
             </div>
         </Card>
     );

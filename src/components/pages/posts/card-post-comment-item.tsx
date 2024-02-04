@@ -9,7 +9,7 @@ interface IProps {
 export default function CardPostCommentItem({ comment }: IProps) {
     return (
         <Card
-            clsx={["border"]}
+            clsx={["border dark:border-zinc-700"]}
             title={
                 <div className="flex items-center gap-x-2">
                     <FaCircleUser className="text-slate-500 text-2xl" />{" "}

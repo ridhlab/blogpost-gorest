@@ -13,8 +13,11 @@ export default function HomeTemplate({
     return (
         <main>
             <Card title="Homepage">
-                <div className="flex gap-x-4">
-                    <Card title="Post" clsx={["border flex-1"]}>
+                <div className="flex gap-4 md:flex-row flex-col ">
+                    <Card
+                        title="Post"
+                        clsx={["border dark:border-zinc-700 flex-1"]}
+                    >
                         <p>Total Post : {totalPost}</p>
                         <div>
                             <Button
@@ -25,7 +28,10 @@ export default function HomeTemplate({
                             </Button>
                         </div>
                     </Card>
-                    <Card title="User" clsx={["border flex-1"]}>
+                    <Card
+                        title="User"
+                        clsx={["border dark:border-zinc-700 flex-1"]}
+                    >
                         <p>Total User : {totalUser}</p>
                         <div>
                             <Button

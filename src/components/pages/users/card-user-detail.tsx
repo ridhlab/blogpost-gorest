@@ -1,11 +1,10 @@
 "use client";
-import Button from "@/components/shared/button/button";
 import Card from "@/components/shared/card/card";
 import Slide from "@/components/shared/slide/slide";
-import { capitalizeWord } from "@/helpers/string";
+import Tag from "@/components/shared/tag/tag";
+import { ActivateStatusEnum } from "@/enums/activate-status";
+import { GenderEnum } from "@/enums/gender";
 import { IUser } from "@/interfaces/entities/user";
-import { FaEdit } from "react-icons/fa";
-
 interface IProps {
     user: IUser;
 }
@@ -17,8 +16,28 @@ export default function CardUserDetail({ user }: IProps) {
                 <div className="flex flex-col gap-y-2">
                     <span>Name : {user.name}</span>
                     <span>Email : {user.email}</span>
-                    <span>Gender : {capitalizeWord(user.gender)}</span>
-                    <span>Status : {capitalizeWord(user.status)}</span>
+                    <span>
+                        Gender :{" "}
+                        <Tag
+                            label={user.gender}
+                            color={
+                                user.gender === GenderEnum.MALE
+                                    ? "primary"
+                                    : "success"
+                            }
+                        />
+                    </span>
+                    <span>
+                        Status :{" "}
+                        <Tag
+                            label={user.status}
+                            color={
+                                user.status === ActivateStatusEnum.ACTIVE
+                                    ? "success"
+                                    : "danger"
+                            }
+                        />
+                    </span>
                 </div>
             </Card>
         </Slide>

@@ -1,0 +1,21 @@
+import clsx from "clsx";
+import { twMerge } from "tailwind-merge";
+
+interface IProps {
+    label: string;
+    color?: "primary" | "danger" | "success";
+}
+
+export default function Tag({ label, color = "primary" }: IProps) {
+    const baseClassnames = "text-[10px] rounded p-1";
+    const colorClassnames = (() => {
+        if (color === "primary")
+            return "border border-blue-500 text-blue-500 bg-blue-50";
+        if (color === "danger")
+            return "border border-red-500 text-red-500 bg-red-50";
+        if (color === "success")
+            return "border border-green-500 text-green-500 bg-green-50";
+    })();
+    const mergedClassnames = [baseClassnames, colorClassnames];
+    return <span className={twMerge(clsx(mergedClassnames))}>{label}</span>;
+}
